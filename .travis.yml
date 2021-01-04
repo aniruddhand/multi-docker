@@ -16,7 +16,7 @@ after_success:
   - docker build -t aniruddhand/multi-server ./server
   - docker build -t aniruddhand/multi-worker ./worker
   # Logs into docker CLI
-  - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_ID" --password-stdin docker.io
   # Push the images to the hub
   - docker push aniruddhand/multi-client
   - docker push aniruddhand/multi-nginx
