@@ -1,0 +1,24 @@
+sudo: required
+image: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t aniruddhand/multi-docker-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true aniruddhand/multi-docker-test npm test
+
+after_success:
+  - docker build -t aniruddhand/multi-client ./client
+  - docker build -t aniruddhand/multi-nginx ./nginx
+  - docker build -t aniruddhand/multi-server ./server
+  - docker build -t aniruddhand/multi-worker ./worker
+  # Logs into docker CLI
+  - echo "$DOCKER_SECRET" | docker login -u "$DOCKER_ID" --password-stdin
+  # Push the images to the hub
+  - docker push aniruddhand/multi-client
+  - docker push aniruddhand/multi-nginx
+  - docker push aniruddhand/multi-server
+  - docker push aniruddhand/multi-worker
