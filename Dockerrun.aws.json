@@ -14,13 +14,6 @@
           "hostname": "api",
           "essential": true,
           "memory": 128
-      },
-      {
-          "name": "worker",
-          "image": "aniruddhand/multi-worker",
-          "hostname": "worker",
-          "essential": true,
-          "memory": 128
       }
     ]
 }
