@@ -1,16 +1,12 @@
 {
-  "AWSEBDockerrunVersion": 2,
-  "containerDefinitions": [
-    {
-        "name": "nginx",
-        "image": "aniruddhand/multi-nginx",
-        "hostname": "nginx",
-        "essential": true,
-        "memory": 128,
-        "portMappings": [{
-            "hostPort": 80,
-            "containerPort": 80
-        }]
-    }
-  ]
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "client",
+        "image": "aniruddhand/multi-client",
+        "hostname": "client",
+        "essential": false,
+        "memory": 128
+      }
+    ]
 }
